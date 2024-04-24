@@ -1,0 +1,59 @@
+<div class="page-wrapper">
+  <div class="page-content">
+    <div class="pricing-table1">
+      <h6 class="mb-0 text-uppercase">Pagamento</h6>
+      <hr />
+
+      <div *ngIf="loading" class="d-flex justify-content-center">
+        <div
+          style="width: 5rem; height: 5rem"
+          class="spinner-border"
+          role="status"
+        ></div>
+      </div>
+
+      <div class="row mt-4" *ngIf="!loading" style="padding: 0 12px">
+
+        <div *ngIf="status=='ACCEPTED'"
+          class="alert border-0 border-start border-5 border-success alert-dismissible fade show py-2"
+        >
+          <div class="d-flex align-items-center">
+            <div class="font-35 text-success">
+              <i class="bx bxs-check-circle"></i>
+            </div>
+            <div class="ms-3">
+              <h6 class="mb-0 text-success">Pagamento feito com sucesso</h6>
+              <div>Consulta o estado do pagamento no menu de recargas!</div>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="status!='ACCEPTED' && status!='REJECTED'"
+          class="alert border-0 border-start border-5 border-info alert-dismissible fade show py-2"
+        >
+          <div class="d-flex align-items-center">
+            <div class="font-35 text-info">
+              <i class="bx bxs-check-circle"></i>
+            </div>
+            <div class="ms-3">
+              <h6 class="mb-0 text-info">Pagamento a ser processado</h6>
+              <div>Consulta o estado do pagamento no menu de recargas após alguns segundos!</div>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="status=='REJECTED'" class="alert border-0 border-start border-5 border-danger alert-dismissible fade show py-2">
+          <div class="d-flex align-items-center">
+            <div class="font-35 text-danger"><i class="bx bxs-message-square-x"></i>
+            </div>
+            <div class="ms-3">
+              <h6 class="mb-0 text-danger">Falhar ao realizar pagamento</h6>
+              <div>Consulta o estado do pagamento no menu de recargas!</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

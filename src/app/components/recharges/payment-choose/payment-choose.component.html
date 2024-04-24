@@ -1,0 +1,102 @@
+<div class="page-wrapper">
+  <div class="page-content">
+    <div class="pricing-table1">
+      <h6 class="mb-0 text-uppercase">Pagamento de recarga</h6>
+      <hr />
+
+      <div *ngIf="loading" class="d-flex justify-content-center">
+        <div
+          style="width: 5rem; height: 5rem"
+          class="spinner-border"
+          role="status"
+        ></div>
+      </div>
+
+      <div *ngIf="!loading" class="row row-cols-1 row-cols-lg-2">
+        <!-- Plus Tier -->
+        <div class="col">
+          <div class="card" *ngIf="!displayReference">
+            <div class="card-header">
+              <h5 class="card-title text-uppercase text-center">
+                Método de Pagamento
+              </h5>
+            </div>
+            <div class="card-body">
+              <p>Plano: {{plan.name}}</p>
+              <p>Custo: {{plan.price}} Kz</p>
+              <div class="d-grid">
+                <button (click)="pay(1)" class="btn btn-primary my-2">
+                  Multicaixa Express
+                </button>
+              </div>
+              <div class="d-grid">
+                <button (click)="pay(2)" class="btn btn-primary my-2">
+                  Referência Multicaixa
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" *ngIf="displayReference">
+            <div class="card-header">
+              <h5 class="card-title text-uppercase text-center">
+                Referência de Pagamento
+              </h5>
+            </div>
+            <div class="card-body">
+              <div class="text-box">
+                <p>Entidade: 10056</p>
+                <p>Referência: {{reference}}</p>
+                <p>Montante: {{plan.price}} Kz</p>
+              </div>
+              <p><span class="badge bg-info text-dark">Após o pagamento será notificado</span></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div
+            class="alert border-0 border-start border-5 border-info alert-dismissible fade show py-2"
+          >
+            <div class="d-flex align-items-center">
+              <div class="font-35 text-info">
+                <i class="bx bx-info-square"></i>
+              </div>
+              <div class="ms-3">
+                <h6 class="mb-0 text-info">
+                  Pagamentos com Multicaixa Express
+                </h6>
+                <div>
+                  - O número de telemóvel deverá estar activo no MCX Express;
+                  <br />- A confirmação/rejeição da compra é efectuada no MCX
+                  Express;
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="alert border-0 border-start border-5 border-info alert-dismissible fade show py-2"
+          >
+            <div class="d-flex align-items-center">
+              <div class="font-35 text-info">
+                <i class="bx bx-info-square"></i>
+              </div>
+              <div class="ms-3">
+                <h6 class="mb-0 text-info">
+                  Pagamentos com Referência Multicaixa
+                </h6>
+                <div>
+                  - Pagamento em todos os canais da rede Multicaixa (ATM, Express, App de bancos);
+                  <br />- A confirmação da compra 15 min após o pagamento;
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

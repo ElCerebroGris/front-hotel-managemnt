@@ -1,0 +1,117 @@
+<div class="page-wrapper">
+  <div class="page-content">
+    <div class="pricing-table1">
+      <h6 class="mb-0 text-uppercase">Recargas</h6>
+      <hr />
+
+      <div *ngIf="loading" class="d-flex justify-content-center">
+        <div
+          style="width: 5rem; height: 5rem"
+          class="spinner-border"
+          role="status"
+        ></div>
+      </div>
+
+      <div
+        *ngIf="!loading"
+        class="alert border-0 border-start border-5 border-info alert-dismissible fade show"
+      >
+        <div>
+          Para ser cliente Pós Pago, por favor envei um email para
+          <a href="mailto:suporte@plugin40.ao">{{ "suporte@plugin40.ao" }}</a>
+        </div>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <div *ngIf="!loading" class="row row-cols-1 row-cols-lg-3">
+        <!-- Plus Tier -->
+        <div *ngFor="let item of plans" class="col">
+          <div class="card">
+            <div class="card-header">
+              <h5 class="card-title text-uppercase text-center">
+                {{ item.name }}
+              </h5>
+            </div>
+            <div class="card-body">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <i class="bx bx-check me-2 font-18"></i
+                  >{{ getPrice(item.price) }} Kz
+                </li>
+                <li class="list-group-item">
+                  <i class="bx bx-check me-2 font-18"></i
+                  >{{ item.sms }} mensagens
+                </li>
+                <li class="list-group-item">
+                  <i class="bx bx-check me-2 font-18"></i>Envio por Portal/API
+                </li>
+              </ul>
+              <div class="d-grid">
+                <a
+                  [routerLink]="['/recharges-payment/' + item.id]"
+                  routerLinkActive="router-link-active"
+                  class="btn btn-primary my-2 radius-30"
+                >
+                  Escolher
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h6 class="mb-0 text-uppercase">Histórico de Recargas</h6>
+
+      <hr />
+      <div class="row mt-4" *ngIf="!loading" style="padding: 0 12px">
+        <div class="card">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table mb-0">
+                <thead class="table-light">
+                  <tr>
+                    <th>Referencia</th>
+                    <th>Plano</th>
+                    <th>Estado</th>
+                    <th>Última atualização</th>
+                    <th>Método de Pagamento</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of recharges_result">
+                    <td>{{ item.reference }}</td>
+                    <td>{{ item.plan.name }}</td>
+                    <td>
+                      <span
+                        *ngIf="item.status == 'ACCEPTED' || item.status == 'PAID'"
+                        class="badge bg-gradient-quepal text-white shadow-sm w-100"
+                        >{{ getState(item.status) }}</span
+                      >
+                      <span
+                        *ngIf="item.status == 'PENDING'"
+                        class="badge bg-gradient-blooker text-white shadow-sm w-100"
+                        >{{ getState(item.status) }}</span
+                      >
+                      <span
+                        *ngIf="item.status == 'REJECTED'"
+                        class="badge bg-gradient-bloody text-white shadow-sm w-100"
+                        >{{ getState(item.status) }}</span
+                      >
+                    </td>
+                    <td>{{ item.created_at | date : "dd-MM-yyyy HH:mm" }}</td>
+                    <td>{{ item.origin }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

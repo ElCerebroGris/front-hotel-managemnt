@@ -1,0 +1,84 @@
+<div
+  class="section-authentication-signin d-flex align-items-center justify-content-center my-5 my-lg-0"
+>
+  <div class="container">
+    <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
+      <div class="col mx-auto">
+        <div class="card mb-0">
+          <div class="card-body">
+            <div class="p-4">
+              <div class="mb-3 text-center">
+                <img src="assets/images/logo-icon.png" width="60" alt="" />
+              </div>
+
+              <div class="text-center mb-4">
+                <h5 class="">Entrar no Aurora</h5>
+              </div>
+              <div *ngIf="loading" class="d-flex justify-content-center">
+                <div
+                  style="width: 5rem; height: 5rem"
+                  class="spinner-border"
+                  role="status"
+                ></div>
+              </div>
+
+              <div *ngIf="!loading" class="form-body">
+                <form class="row g-3" [formGroup]="loginForm">
+                  <div class="col-12">
+                    <label for="inputEmailAddress" class="form-label"
+                      >Email/Telefone</label
+                    >
+                    <input
+                      formControlName="email"
+                      type="email"
+                      class="form-control"
+                      id="inputEmailAddress"
+                    />
+                  </div>
+                  <div class="col-12">
+                    <label for="inputChoosePassword" class="form-label"
+                      >Senha</label
+                    >
+                    <div class="input-group" id="show_hide_password">
+                      <input
+                        formControlName="password"
+                        type="password"
+                        class="form-control border-end-0"
+                        id="inputChoosePassword"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="d-grid">
+                      <button
+                        (click)="onSubmit()"
+                        type="submit"
+                        class="btn btn-primary"
+                      >
+                        Entrar
+                      </button>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="text-center">
+                      <p class="mb-0">
+                        Não tens uma conta?
+                        <a
+                          [routerLink]="['/register']"
+                          routerLinkActive="router-link-active"
+                          >Crie uma</a
+                        >
+                      </p>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--end row-->
+  </div>
+</div>

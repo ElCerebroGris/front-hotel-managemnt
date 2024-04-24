@@ -1,0 +1,6 @@
+.text-box {
+  background-color: #f8f9fa; /* Light gray background color */
+  border: 1px solid #ced4da; /* Gray border */
+  padding: 5px; /* Padding around the text */
+  border-radius: 5px; /* Rounded corners */
+}

@@ -1,0 +1,172 @@
+<div class="d-flex align-items-center justify-content-center my-5">
+  <div class="container-fluid">
+    <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
+      <div class="col mx-auto">
+        <div class="card mb-0">
+          <div class="card-body">
+            <div class="p-4" *ngIf="!validOTP">
+              <div class="mb-3 text-center">
+                <img src="assets/images/logo1.png" width="60" alt="" />
+              </div>
+              <div class="text-center mb-4">
+                <h5 class="">Criar conta no Ombala</h5>
+              </div>
+              <div *ngIf="loading" class="d-flex justify-content-center">
+                <div
+                  style="width: 5rem; height: 5rem"
+                  class="spinner-border"
+                  role="status"
+                ></div>
+              </div>
+
+              <div *ngIf="!loading" class="form-body">
+                <form class="row g-3">
+                  <div class="col-12">
+                    <label for="phone_number" class="form-label"
+                      >Telefone</label
+                    >
+                    <input
+                      [(ngModel)]="phone_number"
+                      type="text"
+                      class="form-control"
+                      id="phone_number"
+                      name="phone_number"
+                    />
+                  </div>
+
+                  <div class="col-12">
+                    <div class="d-grid">
+                      <button
+                        (click)="confirmOTP()"
+                        type="submit"
+                        class="btn btn-primary"
+                      >
+                        Confirmar
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="text-center">
+                      <p class="mb-0">
+                        Já tens uma conta?
+                        <a
+                          [routerLink]="['/login']"
+                          routerLinkActive="router-link-active"
+                          >Faça login</a
+                        >
+                      </p>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <div class="p-4" *ngIf="validOTP">
+              <div class="mb-3 text-center">
+                <img src="assets/images/logo1.png" width="60" alt="" />
+              </div>
+              <div class="text-center mb-4">
+                <h5 class="">Criar conta no Ombala</h5>
+              </div>
+              <div *ngIf="loading" class="d-flex justify-content-center">
+                <div
+                  style="width: 5rem; height: 5rem"
+                  class="spinner-border"
+                  role="status"
+                ></div>
+              </div>
+
+              <div *ngIf="!loading" class="form-body">
+                <form class="row g-3" [formGroup]="loginForm">
+                  <div class="col-12">
+                    <label for="opt_token" class="form-label"
+                      >Código (enviado por SMS)</label
+                    >
+                    <input
+                      formControlName="opt_token"
+                      type="text"
+                      class="form-control"
+                      id="opt_token"
+                    />
+                  </div>
+                  <div class="col-12">
+                    <label for="name" class="form-label">Nome</label>
+                    <input
+                      formControlName="name"
+                      type="text"
+                      class="form-control"
+                      id="name"
+                    />
+                  </div>
+                  <div class="col-12">
+                    <label for="email" class="form-label">Email</label>
+                    <input
+                      formControlName="email"
+                      type="email"
+                      class="form-control"
+                      id="email"
+                    />
+                  </div>
+
+                  <div class="col-12">
+                    <label for="password" class="form-label">Senha</label>
+                    <div class="input-group" id="show_hide_password">
+                      <input
+                        formControlName="password"
+                        type="password"
+                        class="form-control border-end-0"
+                        id="password"
+                      />
+                    </div>
+                    <span class="badge bg-info text-dark"
+                      >Senha deve ter no mínimo 8 caracteres</span
+                    >
+                  </div>
+                  <div class="col-12">
+                    <label for="inputChoosePassword" class="form-label"
+                      >Repetir a Senha</label
+                    >
+                    <div class="input-group" id="show_hide_password">
+                      <input
+                        formControlName="password_confirmation"
+                        type="password"
+                        class="form-control border-end-0"
+                        id="inputChoosePassword"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="d-grid">
+                      <button
+                        (click)="onSubmit()"
+                        type="submit"
+                        class="btn btn-primary"
+                      >
+                        Registrar
+                      </button>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="text-center">
+                      <p class="mb-0">
+                        Já tens uma conta?
+                        <a
+                          [routerLink]="['/login']"
+                          routerLinkActive="router-link-active"
+                          >Faça login</a
+                        >
+                      </p>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--end row-->
+  </div>
+</div>

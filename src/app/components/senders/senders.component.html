@@ -1,0 +1,170 @@
+<div class="page-wrapper">
+  <div class="page-content">
+    <h6 class="mb-0 text-uppercase">Remetentes</h6>
+    <hr />
+
+    <div class="row">
+      <div class="card">
+        <div class="card-body">
+          <div class="row align-items-end mb-3">
+            <div class="col-lg-3 col-xl-2">
+              <a
+                [routerLink]="['/senders-new']"
+                routerLinkActive="router-link-active"
+                class="btn btn-primary mb-3 mb-lg-0"
+              >
+                <i class="bx bxs-plus-square"></i>Novo Remetente</a
+              >
+            </div>
+
+            <div class="col-lg-9 col-xl-10">
+              <form class="float-lg-end">
+                <div class="row row-cols-lg-2 row-cols-xl-auto g-2">
+                  <div class="col">
+                    <div class="position-relative">
+                      <input
+                        [(ngModel)]="chave"
+                        name="chave"
+                        (ngModelChange)="pesquisa($event)"
+                        type="text"
+                        class="form-control ps-5"
+                        placeholder="Pesquisar..."
+                      />
+                      <span
+                        class="position-absolute top-50 product-show translate-middle-y"
+                        ><i class="bx bx-search"></i
+                      ></span>
+                    </div>
+                  </div>
+                  <!--
+                  <div class="col">
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Button group with nested dropdown"
+                    >
+                      <button type="button" class="btn btn-white">
+                        Estado
+                      </button>
+                      <div class="btn-group" role="group">
+                        <button
+                          id="btnGroupDrop1"
+                          type="button"
+                          class="btn btn-white dropdown-toggle dropdown-toggle-nocaret px-1"
+                          data-bs-toggle="dropdown"
+                          aria-expanded="false"
+                        >
+                          <i class="bx bx-chevron-down"></i>
+                        </button>
+                        <ul
+                          class="dropdown-menu"
+                          aria-labelledby="btnGroupDrop1"
+                        >
+                          <li>
+                            <a class="dropdown-item" href="#">Aprovado</a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item" href="#">Pendente</a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item" href="#">Rejeitada</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  -->
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div *ngIf="loading" class="d-flex justify-content-center">
+            <div style="width: 5rem; height: 5rem;" class="spinner-border" role="status">
+            </div>
+          </div>
+
+          <div class="table-responsive" *ngIf="!loading">
+            <table class="table mb-0">
+              <thead class="table-light">
+                <tr>
+                  <th>Nome</th>
+                  <th>Estado</th>
+                  <th>Data de criação</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of senders">
+                  <td>{{ item.name }}</td>
+                  <td>
+                    <span
+                      *ngIf="item.status == 'APPROVED'"
+                      class="badge bg-gradient-quepal text-white shadow-sm w-100"
+                      >{{ getState(item.status) }}</span
+                    >
+                    <span
+                      *ngIf="item.status == 'PENDING'"
+                      class="badge bg-gradient-blooker text-white shadow-sm w-100"
+                      >{{ getState(item.status) }}</span
+                    >
+                    <span
+                      *ngIf="item.status == 'REJECTED'"
+                      class="badge bg-gradient-bloody text-white shadow-sm w-100"
+                      >{{ getState(item.status) }}</span
+                    >
+                    <span
+                      *ngIf="item.status == 'BLOCKED'"
+                      class="badge bg-gradient-bloody text-white shadow-sm w-100"
+                      >{{ getState(item.status) }}</span
+                    >
+                  </td>
+                  <td>{{ item.created_at | date : "dd-MM-yyyy HH:mm" }}</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="col-12 pb-1" *ngIf="false">
+              <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center mb-3">
+                  <li
+                    class="page-item linkMouse"
+                    [ngClass]="page - 1 < 1 ? 'disabled' : ''"
+                  >
+                    <a
+                      class="page-link"
+                      (click)="handlePageChange(-1)"
+                      aria-label="Previous"
+                    >
+                      <span>Anterior</span>
+                    </a>
+                  </li>
+                  <li
+                    class="page-item linkMouse"
+                    *ngFor="let item of pagesNum"
+                    [ngClass]="item == page ? 'active' : ''"
+                  >
+                    <a class="page-link" (click)="handlePageChange(item + 1)">{{
+                      item
+                    }}</a>
+                  </li>
+                  <li
+                    class="page-item linkMouse"
+                    [ngClass]="page + 1 > allCount ? 'disabled' : ''"
+                  >
+                    <a
+                      class="page-link"
+                      (click)="handlePageChange(0)"
+                      aria-label="Next"
+                    >
+                      <span>Próximo</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<!--wrapper-->
+<div class="wrapper">
+  <!--start header wrapper-->
+  <app-header *ngIf="online"></app-header>
+  <!--end header wrapper-->
+  <!--start page wrapper -->
+
+  <router-outlet></router-outlet>
+
+  <!--start overlay-->
+  <div class="overlay toggle-icon"></div>
+  <!--end overlay-->
+  <!--Start Back To Top Button-->
+  <a href="javaScript:;" class="back-to-top"
+    ><i class="bx bxs-up-arrow-alt"></i
+  ></a>
+  <!--End Back To Top Button-->
+</div>
+
+<!--end wrapper-->

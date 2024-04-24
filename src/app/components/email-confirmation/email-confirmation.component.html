@@ -1,0 +1,31 @@
+<div class="page-wrapper">
+  <div class="page-content">
+    <div class="container">
+      <div class="card py-5">
+        <div class="row g-0">
+          <div class="col col-xl-5">
+            <div class="card-body p-4">
+              <h3 class="font-weight-bold display-4">Confirmação de email</h3>
+              <div *ngIf="loading" class="d-flex justify-content-center">
+                <div
+                  style="width: 5rem; height: 5rem"
+                  class="spinner-border"
+                  role="status"
+                ></div>
+              </div>
+              <div class="mt-5">
+                <a
+                  [routerLink]="['/']"
+                  routerLinkActive="router-link-active"
+                  class="btn btn-primary btn-lg px-md-5 radius-30"
+                  >Vá para Início</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--end row-->
+      </div>
+    </div>
+  </div>
+</div>

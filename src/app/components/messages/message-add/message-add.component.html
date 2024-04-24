@@ -1,0 +1,90 @@
+<div class="page-wrapper">
+  <div class="page-content">
+    <h6 class="mb-0 text-uppercase">Envio de mensagens</h6>
+    <hr />
+
+    <div class="card row col-lg-12 col-md-12 col-sm-12">
+      <div class="card-body p-4">
+        <div class="form-body mt-4">
+          <div *ngIf="loading" class="d-flex justify-content-center">
+            <div
+              style="width: 5rem; height: 5rem"
+              class="spinner-border"
+              role="status"
+            ></div>
+          </div>
+
+          <div
+            *ngIf="errorForm"
+            class="alert alert-danger border-0 bg-danger alert-dismissible fade show"
+          >
+            <div class="text-white">{{messageError}}</div>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="alert"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <form [formGroup]="addForm" *ngIf="!loading" class="row g-3">
+            <div class="col-md-12">
+              <label for="message" class="form-label">Corpo da mensagem</label>
+              <textarea
+                formControlName="message"
+                class="form-control"
+                id="message"
+                rows="3"
+              ></textarea>
+            </div>
+
+            <div class="col-md-12">
+              <label for="from" class="form-label">Remetente</label>
+              <select formControlName="from" id="from" class="form-select">
+                <option *ngFor="let item of senders" [value]="item.name">
+                  {{ item.name }}
+                </option>
+              </select>
+            </div>
+
+            <div class="col-md-12">
+              <label for="to" class="form-label">Destinatários</label>
+              <input formControlName="to"
+                type="text"
+                class="form-control"
+                id="to"
+              />
+              <span class="badge bg-info text-dark">Insere cada número separado por vírgula</span>
+            </div>
+
+            <div class="col-md-12">
+              <label for="toGroup" class="form-label">Grupo Destinatário</label>
+              <select formControlName="toGroup" id="toGroup" class="form-select">
+                <option *ngFor="let item of groups" [value]="item.id">
+                  {{ item.name }}
+                </option>
+              </select>
+            </div>
+
+            <div class="col-md-12">
+              <label for="schedule" class="form-label">Agendar envio</label>
+              <input
+                formControlName="schedule"
+                type="datetime-local"
+                class="form-control"
+                id="schedule"
+              />
+            </div>
+
+            <div class="col-12">
+              <button (click)="salvar()" type="button" class="btn btn-primary">
+                Enviar
+              </button>
+            </div>
+          </form>
+          <!--end row-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
