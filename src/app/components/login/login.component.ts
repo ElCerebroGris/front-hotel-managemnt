@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     if (this.auth.verifyUserLoged()) {
       if (this.auth.verifyUserAdmin())
         this.router.navigate(['/administration-dashboard']);
-      else this.router.navigate(['/messages']);
+      else this.router.navigate(['/administration-dashboard']);
     }
     this.loginForm = this._formBuilder.group({
       email: ['', Validators.required],

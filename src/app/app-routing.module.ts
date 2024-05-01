@@ -23,6 +23,8 @@ import { GroupsComponent } from './components/groups/groups.component';
 import { GroupsAddComponent } from './components/groups/groups-add/groups-add.component';
 import { GroupsListMembersComponent } from './components/groups/groups-list-members/groups-list-members.component';
 import { PaymentChooseComponent } from './components/recharges/payment-choose/payment-choose.component';
+import { QuartosComponent } from './components/quartos/quartos.component';
+import { QuartosAddComponent } from './components/quartos/quartos-add/quartos-add.component';
 
 const routes: Routes = [
   {
@@ -44,13 +46,13 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'administration-senders',
-    component: SendersAdminComponent,
+    path: 'quartos',
+    component: QuartosComponent,
     canActivate: [AuthGuard]
   },
   {
-    path: 'administration-users',
-    component: UsersComponent,
+    path: 'quarto-novo',
+    component: QuartosAddComponent,
     canActivate: [AuthGuard]
   },
   {

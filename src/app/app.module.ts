@@ -38,6 +38,8 @@ import { GroupsAddComponent } from './components/groups/groups-add/groups-add.co
 import { GroupsAddMemberComponent } from './components/groups/groups-add-member/groups-add-member.component';
 import { GroupsListMembersComponent } from './components/groups/groups-list-members/groups-list-members.component';
 import { PaymentChooseComponent } from './components/recharges/payment-choose/payment-choose.component';
+import { QuartosComponent } from './components/quartos/quartos.component';
+import { QuartosAddComponent } from './components/quartos/quartos-add/quartos-add.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +68,9 @@ import { PaymentChooseComponent } from './components/recharges/payment-choose/pa
     GroupsAddComponent,
     GroupsAddMemberComponent,
     GroupsListMembersComponent,
-    PaymentChooseComponent
+    PaymentChooseComponent,
+    QuartosComponent,
+    QuartosAddComponent
   ],
   imports: [
     BrowserModule,
