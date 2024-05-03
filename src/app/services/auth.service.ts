@@ -15,7 +15,7 @@ import {
   providedIn: 'root',
 })
 export class AuthService {
-  baseUrl = 'https://api.useombala.ao/v1/';
+  baseUrl = 'https://api-hotel-managemnt.onrender.com/';
   headers?: {
     responseType: 'json';
     'Content-Type': 'application/json';

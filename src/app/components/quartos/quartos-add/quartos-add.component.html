@@ -3,7 +3,7 @@
     <h6 class="mb-0 text-uppercase">Novo Remetente</h6>
     <hr />
 
-    <div class="card row col-12">
+    <div class="card row col-9">
       <div class="card-body">
         <div class="form-body">
 
@@ -16,6 +16,14 @@
             <div class="col-md-12">
               <label for="input1" class="form-label">Nome</label>
               <input formControlName="name" type="text" class="form-control" id="input1" />
+            </div>
+            <div class="col-md-12">
+              <label for="roomType" class="form-label">Tipo</label>
+              <select formControlName="roomType" id="roomType" class="form-select">
+                <option *ngFor="let item of roomTypes" [value]="item.name">
+                  {{ item.name }}
+                </option>
+              </select>
             </div>
 
             <div class="col-12">

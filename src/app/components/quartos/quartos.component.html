@@ -52,14 +52,12 @@
                 <tr>
                   <th>Nome</th>
                   <th>Tipo</th>
-                  <th></th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let item of senders">
                   <td>{{ item.name }}</td>
                   <td>{{ item.type }}</td>
-                  <td><a [routerLink]="['/groups-view/'+item.id]" routerLinkActive="router-link-active"  class="btn btn-secondary btn-sm radius-30 px-4">Ver detalhes</a></td>
                 </tr>
               </tbody>
             </table>

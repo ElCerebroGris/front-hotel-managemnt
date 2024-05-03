@@ -1,5 +1,5 @@
 [
-  {"id": 1, "name": "Room 1", "type": "Single"},
-  {"id": 2, "name": "Room 2", "type": "Double"},
-  {"id": 3, "name": "Room 3", "type": "Suite"}
+  {"id": 1, "name": "Quarto 1", "type": "Single"},
+  {"id": 2, "name": "Quarto 2", "type": "Double"},
+  {"id": 3, "name": "Quarto 3", "type": "Suite"}
 ]

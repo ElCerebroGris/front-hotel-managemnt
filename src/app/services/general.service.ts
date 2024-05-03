@@ -19,7 +19,7 @@ declare global {
   providedIn: 'root',
 })
 export class GeneralService {
-  baseUrl = 'https://api.useombala.ao/v1/';
+  baseUrl = 'https://api-hotel-managemnt.onrender.com/';
 
   headers?: {
     responseType: 'json';

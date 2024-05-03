@@ -57,9 +57,7 @@ export class LoginComponent implements OnInit {
         this.usuario.role = res.role;
         this.loading = false;
         this.auth.setLogin(this.usuario);
-        if (this.usuario.role == 'admin')
-          this.router.navigate(['/administration-dashboard']);
-        else this.router.navigate(['/messages']);
+        this.router.navigate(['/administration-dashboard']);
       },
       (error) => {
         this.loading = false;
