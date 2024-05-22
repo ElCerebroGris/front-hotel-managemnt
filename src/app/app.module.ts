@@ -7,7 +7,6 @@ import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
-import { PainelComponent } from './components/painel/painel.component';
 import { ArquivosComponent } from './components/arquivos/arquivos.component';
 import { LoginComponent } from './components/login/login.component';
 import { JwtInterceptor } from './helpers/JwtInterceptor';
@@ -29,9 +28,7 @@ import { PaymentGpoStatusComponent } from './components/recharges/payment-gpo-st
 import { Error404Component } from './components/error404/error404.component';
 import { ResponseInterceptor } from './helpers/responseInterceptor';
 import { EmailConfirmationComponent } from './components/email-confirmation/email-confirmation.component';
-import { DocDevComponent } from './components/admin/doc-dev/doc-dev.component';
 import { DashboardComponent } from './components/administration/dashboard/dashboard.component';
-import { SendersAdminComponent } from './components/administration/senders-admin/senders-admin.component';
 import { UsersComponent } from './components/administration/users/users.component';
 import { GroupsComponent } from './components/groups/groups.component';
 import { GroupsAddComponent } from './components/groups/groups-add/groups-add.component';
@@ -40,12 +37,12 @@ import { GroupsListMembersComponent } from './components/groups/groups-list-memb
 import { PaymentChooseComponent } from './components/recharges/payment-choose/payment-choose.component';
 import { QuartosComponent } from './components/quartos/quartos.component';
 import { QuartosAddComponent } from './components/quartos/quartos-add/quartos-add.component';
+import { UtilizadorNovoComponent } from './components/administration/users/utilizador-novo/utilizador-novo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    PainelComponent,
     ArquivosComponent,
     LoginComponent,
     MessagesComponent,
@@ -60,9 +57,7 @@ import { QuartosAddComponent } from './components/quartos/quartos-add/quartos-ad
     PaymentGpoStatusComponent,
     Error404Component,
     EmailConfirmationComponent,
-    DocDevComponent,
     DashboardComponent,
-    SendersAdminComponent,
     UsersComponent,
     GroupsComponent,
     GroupsAddComponent,
@@ -70,7 +65,8 @@ import { QuartosAddComponent } from './components/quartos/quartos-add/quartos-ad
     GroupsListMembersComponent,
     PaymentChooseComponent,
     QuartosComponent,
-    QuartosAddComponent
+    QuartosAddComponent,
+    UtilizadorNovoComponent
   ],
   imports: [
     BrowserModule,

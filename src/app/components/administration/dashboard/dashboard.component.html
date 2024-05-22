@@ -44,6 +44,9 @@
     <!--end row-->
     <div class="row">
       <div class="card">
+        <div class="card-header">
+          Últimas reservas
+        </div>
         <div class="card-body">
           <div *ngIf="loading" class="d-flex justify-content-center">
             <div
@@ -53,30 +56,10 @@
             ></div>
           </div>
 
-          <div class="row" *ngIf="false">
-            <div>
-              <canvasjs-chart [options]="chartOptions"></canvasjs-chart>
-            </div>
+          <div class="row">
+
           </div>
 
-          <div class="row" *ngIf="!loading">
-            <div class="col-md-6">
-              <label for="from" class="form-label">Ano</label>
-              <select [(ngModel)]="selectedYear" (change)="onYearMonthChange()" class="form-select">
-                <option *ngFor="let year of years" [value]="year">{{ year }}</option>
-              </select>
-            </div>
-            <div class="col-md-6">
-              <label for="from" class="form-label">Mês</label>
-              <select id="month" [(ngModel)]="selectedMonth" (change)="onYearMonthChange()" class="form-select">
-                <option *ngFor="let month of months" [value]="month.value">{{ month.name }}</option>
-              </select>
-            </div>
-
-            <div>
-              <canvasjs-chart [options]="chartOptions2" [styles]="{width: '100%', height:'360px'}"></canvasjs-chart>
-          </div>
-          </div>
         </div>
       </div>
     </div>

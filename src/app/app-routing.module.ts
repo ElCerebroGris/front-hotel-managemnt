@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PainelComponent } from './components/painel/painel.component';
-import { ArquivosComponent } from './components/arquivos/arquivos.component';
 import { AuthGuard } from './helpers/auth.guard';
 import { LoginComponent } from './components/login/login.component';
 import { MessagesComponent } from './components/messages/messages.component';
@@ -17,7 +15,6 @@ import { PaymentGpoStatusComponent } from './components/recharges/payment-gpo-st
 import { Error404Component } from './components/error404/error404.component';
 import { EmailConfirmationComponent } from './components/email-confirmation/email-confirmation.component';
 import { DashboardComponent } from './components/administration/dashboard/dashboard.component';
-import { SendersAdminComponent } from './components/administration/senders-admin/senders-admin.component';
 import { UsersComponent } from './components/administration/users/users.component';
 import { GroupsComponent } from './components/groups/groups.component';
 import { GroupsAddComponent } from './components/groups/groups-add/groups-add.component';
@@ -25,6 +22,7 @@ import { GroupsListMembersComponent } from './components/groups/groups-list-memb
 import { PaymentChooseComponent } from './components/recharges/payment-choose/payment-choose.component';
 import { QuartosComponent } from './components/quartos/quartos.component';
 import { QuartosAddComponent } from './components/quartos/quartos-add/quartos-add.component';
+import { UtilizadorNovoComponent } from './components/administration/users/utilizador-novo/utilizador-novo.component';
 
 const routes: Routes = [
   {
@@ -56,28 +54,18 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'painel',
-    component: PainelComponent,
+    path: 'users',
+    component: UsersComponent,
     canActivate: [AuthGuard]
   },
   {
-    path: 'senders',
-    component: SendersComponent,
+    path: 'novo-utilizador',
+    component: UtilizadorNovoComponent,
     canActivate: [AuthGuard]
   },
   {
-    path: 'senders-new',
-    component: SendersAddComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'groups',
-    component: GroupsComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'groups-new',
-    component: GroupsAddComponent,
+    path: 'reservas',
+    component: DashboardComponent,
     canActivate: [AuthGuard]
   },
   {
@@ -96,38 +84,13 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'recharges',
-    component: RechargesComponent,
-    canActivate: [AuthGuard]
-  },
-  {
     path: 'recharges-payment/:idPlan',
     component: PaymentChooseComponent,
     canActivate: [AuthGuard]
   },
   {
     path: 'admin',
-    component: AdminComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'message-view/:idMessage',
-    component: MessageViewComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'payment-gpo/:token',
-    component: PaymentGpoComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'payment-gpo-status/:token',
-    component: PaymentGpoStatusComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'activate/:token',
-    component: EmailConfirmationComponent,
+    component: DashboardComponent,
     canActivate: [AuthGuard]
   },
   {

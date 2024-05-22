@@ -13,11 +13,7 @@ export class Utilizador {
 
 export class User {
   id?: string;
-  username?: string;
-  phone_number?: string;
-  created_at?: string;
-  available_sms?: string;
-  postpaid?: string;
-  postpaid_date?: string;
-  role?: string;
+  email?: string;
+  createdAt?: string;
+  nome?: string;
 }

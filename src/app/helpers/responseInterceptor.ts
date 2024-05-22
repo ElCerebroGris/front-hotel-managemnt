@@ -33,9 +33,6 @@ export class ResponseInterceptor implements HttpInterceptor {
           if (evt.body && req.method === 'POST') {
             this.service.callNotification('success');
           }
-          if (authorizationHeader && authorizationHeader.startsWith('Token') && !requestUrl.includes('credits') && !this.auth.verifyUserAdmin()) {
-            this.auth.updateCredit();
-          }
         }
       }),
       catchError((err: HttpErrorResponse) => {
