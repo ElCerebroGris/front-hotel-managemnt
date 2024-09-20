@@ -29,6 +29,7 @@ export class UtilizadorNovoComponent implements OnInit {
       nome: ['', Validators.required],
       email: ['', Validators.required],
       senha: ['', Validators.required],
+      telefone: ['', Validators.required],
     });
   }
 
@@ -42,11 +43,13 @@ export class UtilizadorNovoComponent implements OnInit {
 
     let data = {
       nome: this.addForm.value.nome,
+      telefone: this.addForm.value.telefone,
       email: this.addForm.value.email,
+      username: this.addForm.value.email,
       senha: this.addForm.value.senha,
     };
 
-    this.service.postter('usuarios', data).subscribe(
+    this.service.postter('utilizadores/register', data).subscribe(
       (res) => {
         this.router.navigate(['users']);
       },

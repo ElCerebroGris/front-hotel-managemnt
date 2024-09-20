@@ -16,4 +16,5 @@ export class User {
   email?: string;
   createdAt?: string;
   nome?: string;
+  telefone!: string;
 }

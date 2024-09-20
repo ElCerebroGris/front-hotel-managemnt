@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Group } from 'src/app/models/group';
-import { Room } from 'src/app/models/room';
 import { GeneralService } from 'src/app/services/general.service';
-import { RoomService } from 'src/app/services/room.service';
 
 @Component({
   selector: 'app-quartos-add',
@@ -29,8 +27,7 @@ export class QuartosAddComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     private router: Router,
-    private service: RoomService,
-    private generalService: GeneralService
+    private service: GeneralService
   ) {}
 
   ngOnInit(): void {
@@ -51,21 +48,19 @@ export class QuartosAddComponent implements OnInit {
 
     const randomId: number = this.getRandomInt(1, 100000);
 
-    let data: Room = {
+    let data = {
       id: randomId,
       name: this.addForm.value.name,
       type: this.addForm.value.roomType,
     };
 
-    this.service.addRoom2(data).subscribe(
+    this.service.postter('quartos', data).subscribe(
       (res) => {
         this.router.navigate(['quartos']);
       },
       (error) => {
         this.errorForm = true;
         this.loading = false;
-        console.log(error)
-        this.generalService.callNotification('error', 'Dados inválidos');
       }
     );
   }

@@ -24,7 +24,7 @@ export class UsersComponent implements OnInit {
   }
 
   carregar() {
-    this.service.getter('usuarios').subscribe(
+    this.service.getter('utilizadores').subscribe(
       (res) => {
         this.users = this.allUsers = res;
         this.loading = false;

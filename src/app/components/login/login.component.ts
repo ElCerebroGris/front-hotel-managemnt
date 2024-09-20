@@ -41,11 +41,11 @@ export class LoginComponent implements OnInit {
     }
     this.loading = true;
     let data = {
-      email: this.loginForm.value.email,
+      username: this.loginForm.value.email,
       senha: this.loginForm.value.password,
     };
 
-    this.auth.postter('login', data).subscribe(
+    this.auth.postter('utilizadores/login', data).subscribe(
       (res) => {
         this.usuario.token = res.auth_token;
         this.usuario.uuid = res.uuid;
@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
         this.usuario.role = res.role;
         this.loading = false;
         this.auth.setLogin(this.usuario);
-        this.router.navigate(['/administration-dashboard']);
+        this.router.navigate(['/admin']);
       },
       (error) => {
         this.loading = false;

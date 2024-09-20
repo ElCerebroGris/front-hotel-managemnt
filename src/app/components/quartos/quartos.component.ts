@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Room } from 'src/app/models/room';
-import { RoomService } from 'src/app/services/room.service';
+import { Quarto } from 'src/app/models/quarto';
+import { GeneralService } from 'src/app/services/general.service';
 
 @Component({
   selector: 'app-quartos',
@@ -10,8 +10,8 @@ import { RoomService } from 'src/app/services/room.service';
 export class QuartosComponent implements OnInit {
 
   loading = true;
-  senders: Room[] = [];
-  allProcessos: Room[] = [];
+  quartos: Quarto[] = [];
+  todosQuartos: Quarto[] = [];
   chave = '';
 
   page = 1;
@@ -19,24 +19,23 @@ export class QuartosComponent implements OnInit {
   allCount = 0;
   pagesNum!: number[];
 
-  constructor(private service: RoomService) {}
+  constructor(private service: GeneralService) {}
 
   ngOnInit(): void {
     this.carregar();
   }
 
   carregar() {
-    this.service.getRooms().subscribe(
+    this.service.getter('quartos').subscribe(
       (res) => {
-        this.senders = this.allProcessos = res;
-        //this.allCount = res.pagination.last_page+1;
-        this.pagesNum = Array.from({ length: this.allCount }, (e, i) => i + 1);
+        this.quartos = this.todosQuartos = res;
         this.loading = false;
       },
       (error) => {
         this.loading = false;
       }
     );
+    this.loading = false;
   }
 
   handlePageChange(pos: number): void {
@@ -47,12 +46,12 @@ export class QuartosComponent implements OnInit {
   }
 
   pesquisa($event: any): void {
-    this.senders = this.allProcessos.filter((a) =>
-      a.name.toUpperCase().includes(this.chave.toUpperCase())
+    this.quartos = this.todosQuartos.filter((a) =>
+      a.tipo.toUpperCase().includes(this.chave.toUpperCase())
     );
 
-    if (!this.senders || this.chave.length === 0) {
-      this.senders = this.allProcessos;
+    if (!this.quartos || this.chave.length === 0) {
+      this.quartos = this.todosQuartos;
     }
   }
 

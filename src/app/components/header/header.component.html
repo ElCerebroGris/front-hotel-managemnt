@@ -91,7 +91,7 @@
 
             <li class="nav-item dropdown">
               <a
-                [routerLink]="['/administration-dashboard']"
+                [routerLink]="['/admin']"
                 routerLinkActive="router-link-active"
                 class="nav-link dropdown-toggle dropdown-toggle-nocaret"
                 data-bs-toggle="dropdown"
@@ -142,20 +142,6 @@
                 <div class="menu-title d-flex align-items-center">
                   Quartos
                 </div>
-              </a>
-            </li>
-
-            <li *ngIf="!admin" class="nav-item dropdown">
-              <a
-                [routerLink]="['/admin']"
-                routerLinkActive="router-link-active"
-                class="nav-link dropdown-toggle dropdown-toggle-nocaret"
-                data-bs-toggle="dropdown"
-              >
-                <div class="parent-icon">
-                  <i class="bx bx-cog"></i>
-                </div>
-                <div class="menu-title d-flex align-items-center">Administração</div>
               </a>
             </li>
 

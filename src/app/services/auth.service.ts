@@ -15,7 +15,7 @@ import {
   providedIn: 'root',
 })
 export class AuthService {
-  baseUrl = 'https://api-hotel-managemnt.onrender.com/';
+  baseUrl = 'https://api-hotel-aurora.onrender.com/';
   headers?: {
     responseType: 'json';
     'Content-Type': 'application/json';
