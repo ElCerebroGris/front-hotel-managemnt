@@ -54,19 +54,15 @@ export class AuthService {
   }
 
   setLogin(usuario: Utilizador) {
-    localStorage.setItem(GeneralConstants.USER_AUTH.USERID_KEY, usuario.uuid!);
+    localStorage.setItem(GeneralConstants.USER_AUTH.USERID_KEY, usuario.id!);
     localStorage.setItem(GeneralConstants.USER_AUTH.TOKEN_KEY, usuario.token!);
-    localStorage.setItem(
-      GeneralConstants.USER_AUTH.API_TOKEN_KEY,
-      usuario.api_token!
-    );
     localStorage.setItem(
       GeneralConstants.USER_AUTH.SMS_KEY,
       usuario.available_sms!
     );
     localStorage.setItem(
       GeneralConstants.USER_AUTH.USEREMAIL_KEY,
-      usuario.email_or_phone_number!
+      usuario.email!
     );
     localStorage.setItem(
       GeneralConstants.USER_AUTH.USERNAME_KEY,

@@ -1,1 +1,50 @@
-<p>reservas-add works!</p>
+<div class="page-wrapper">
+  <div class="page-content">
+    <h6 class="mb-0 text-uppercase">Nova Reserva</h6>
+    <hr />
+
+    <div class="card row col-12">
+      <div class="card-body">
+        <div class="form-body">
+
+          <div *ngIf="loading" class="d-flex justify-content-center">
+            <div style="width: 5rem; height: 5rem;" class="spinner-border" role="status">
+            </div>
+          </div>
+
+          <form [formGroup]="addForm" *ngIf="!loading" class="row g-3">
+            <div class="col-md-12">
+              <label for="checkin_date" class="form-label">Data de entrada</label>
+              <input formControlName="checkin_date" type="date" class="form-control" id="checkin_date" />
+            </div>
+
+            <div class="col-md-12">
+              <label for="checkout_date" class="form-label">Data de sída</label>
+              <input formControlName="checkout_date" type="date" class="form-control" id="checkout_date" />
+            </div>
+
+            <div class="col-md-12">
+              <label for="quarto_id" class="form-label">Quarto</label>
+              <select formControlName="quarto_id" id="quarto_id" class="form-select">
+                <option *ngFor="let item of quartos" [value]="item.id">
+                  {{ item.comodidades }} / {{ item.preco }} Kz
+                </option>
+              </select>
+            </div>
+
+            <div class="col-12">
+              <button
+                  (click)="salvar()"
+                  type="button"
+                  class="btn btn-primary"
+                >
+                  Salvar
+                </button>
+            </div>
+          </form>
+          <!--end row-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

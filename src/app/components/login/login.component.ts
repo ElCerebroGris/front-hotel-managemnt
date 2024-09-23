@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.auth.verifyUserLoged()) {
-      this.router.navigate(['/administration-dashboard']);
+      this.router.navigate(['/admin']);
     }
     this.loginForm = this._formBuilder.group({
       email: ['', Validators.required],
@@ -47,11 +47,10 @@ export class LoginComponent implements OnInit {
 
     this.auth.postter('utilizadores/login', data).subscribe(
       (res) => {
-        this.usuario.token = res.auth_token;
-        this.usuario.uuid = res.uuid;
+        this.usuario.token = res.token;
+        this.usuario.id = res.user.id;
         this.usuario.phone_number = this.usuario.username = 'admin';
-        this.usuario.api_token = res.api_token;
-        this.usuario.available_sms = res.available_sms;
+        this.usuario.email = res.user.email;
         this.usuario.role = res.role;
         this.loading = false;
         this.auth.setLogin(this.usuario);

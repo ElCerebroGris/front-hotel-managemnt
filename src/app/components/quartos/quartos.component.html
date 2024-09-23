@@ -42,8 +42,11 @@
           </div>
 
           <div *ngIf="loading" class="d-flex justify-content-center">
-            <div style="width: 5rem; height: 5rem;" class="spinner-border" role="status">
-            </div>
+            <div
+              style="width: 5rem; height: 5rem"
+              class="spinner-border"
+              role="status"
+            ></div>
           </div>
 
           <div class="table-responsive" *ngIf="!loading">
@@ -52,12 +55,27 @@
                 <tr>
                   <th>Nome</th>
                   <th>Tipo</th>
+                  <th>Preço</th>
+                  <th>Situação</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let item of quartos">
-                  <td>{{ item.tipo }}</td>
                   <td>{{ item.comodidades }}</td>
+                  <td>{{ item.tipo }}</td>
+                  <td>{{ item.preco }} Kz</td>
+                  <td>
+                    <span
+                      *ngIf="item.situacao == 'vazio'"
+                      class="badge bg-gradient-quepal text-white shadow-sm w-100"
+                      >{{ item.situacao }}</span
+                    >
+                    <span
+                      *ngIf="item.situacao == 'ocupado'"
+                      class="badge bg-gradient-bloody text-white shadow-sm w-100"
+                      >{{ item.situacao }}</span
+                    >
+                  </td>
                 </tr>
               </tbody>
             </table>

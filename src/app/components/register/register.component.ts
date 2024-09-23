@@ -61,9 +61,8 @@ export class RegisterComponent implements OnInit {
     this.auth.postter('users', data).subscribe({
       next: (res) => {
         this.usuario.token = res.auth_token;
-        this.usuario.uuid = res.uuid;
+        this.usuario.id = res.uuid;
         this.usuario.phone_number = this.usuario.username = res.phone_number;
-        this.usuario.api_token = res.api_token;
         this.usuario.available_sms = res.available_sms ?? 0;
         this.loading = false;
         this.auth.setLogin(this.usuario);

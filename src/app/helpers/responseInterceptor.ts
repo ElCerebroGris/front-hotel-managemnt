@@ -68,9 +68,7 @@ export class ResponseInterceptor implements HttpInterceptor {
 
         if (err.status == 400 || err.status == 403 || err.status == 422) {
           title = 'Erro de Requisição';
-          const errorMessageList = err.error.errors;
-          const errorMessage = errorMessageList.map((obj: { message: any; }) => obj.message).join(', ');
-          this.service.callNotification('error', errorMessage);
+          this.service.callNotification('error', err.error);
         }
 
         if (err.status == 500) {

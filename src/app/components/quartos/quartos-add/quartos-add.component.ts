@@ -17,11 +17,8 @@ export class QuartosAddComponent implements OnInit {
   errorForm = false;
 
   roomTypes: { id: number; name: string }[] = [
-    { id: 1, name: 'Single' },
-    { id: 2, name: 'Double' },
-    { id: 3, name: 'Suite' },
-    { id: 4, name: 'Penthouse' },
-    { id: 5, name: 'Studio' },
+    { id: 1, name: 'Solteiro' },
+    { id: 2, name: 'Casal' }
   ];
 
   constructor(
@@ -35,6 +32,7 @@ export class QuartosAddComponent implements OnInit {
     this.addForm = this._formBuilder.group({
       name: ['', Validators.required],
       roomType: ['', Validators.required],
+      price: ['', Validators.required]
     });
   }
 
@@ -49,9 +47,9 @@ export class QuartosAddComponent implements OnInit {
     const randomId: number = this.getRandomInt(1, 100000);
 
     let data = {
-      id: randomId,
-      name: this.addForm.value.name,
-      type: this.addForm.value.roomType,
+      comodidades: this.addForm.value.name,
+      tipo: this.addForm.value.roomType,
+      preco: this.addForm.value.price
     };
 
     this.service.postter('quartos', data).subscribe(

@@ -1,11 +1,11 @@
 import { Permission } from "./permission";
 
 export class Utilizador {
-  uuid?: string;
+  id?: string;
   email_or_phone_number?: string;
   username?: string;
   phone_number?: string;
-  api_token?: string;
+  email?: string;
   available_sms?: string;
   token?: string;
   role?: string;
