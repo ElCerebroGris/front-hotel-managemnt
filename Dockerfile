@@ -10,6 +10,8 @@ COPY . .
 # COPY ./docker/nginx/nginx.conf /temp/nginx.conf
 # RUN envsubst /app < /temp/nginx.conf > /etc/nginx/conf.d/default.conf
 
+ENV GENERATE_SOURCEMAP=false
+
 RUN npm install
 RUN npm run build
 
