@@ -1,5 +1,5 @@
 # Dockerfile
-FROM node:14.16.0 as node
+FROM node:19.5.0-alpine as node
 
 WORKDIR /app
 COPY . .
