@@ -32,6 +32,23 @@
               </select>
             </div>
 
+             <!-- Seção de Serviços -->
+             <div class="col-md-12">
+              <label for="servicos" class="form-label">Serviços adicionais</label>
+              <div class="form-check" *ngFor="let servico of servicos">
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  [id]="'servico_' + servico.id"
+                  [value]="servico.id"
+                  (change)="onServicoChange($event)"
+                />
+                <label class="form-check-label" [for]="'servico_' + servico.id">
+                  {{ servico.descricao }} - {{ servico.preco }} Kz
+                </label>
+              </div>
+            </div>
+
             <div class="col-12">
               <button
                   (click)="salvar()"

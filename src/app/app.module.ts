@@ -33,6 +33,8 @@ import { QuartosAddComponent } from './components/quartos/quartos-add/quartos-ad
 import { UtilizadorNovoComponent } from './components/users/utilizador-novo/utilizador-novo.component';
 import { ReservasComponent } from './components/reservas/reservas.component';
 import { ReservasAddComponent } from './components/reservas/reservas-add/reservas-add.component';
+import { ServicosComponent } from './components/servicos/servicos.component';
+import { ServicosAddComponent } from './components/servicos/servicos-add/servicos-add.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,9 @@ import { ReservasAddComponent } from './components/reservas/reservas-add/reserva
     QuartosAddComponent,
     UtilizadorNovoComponent,
     ReservasComponent,
-    ReservasAddComponent
+    ReservasAddComponent,
+    ServicosComponent,
+    ServicosAddComponent
   ],
   imports: [
     BrowserModule,

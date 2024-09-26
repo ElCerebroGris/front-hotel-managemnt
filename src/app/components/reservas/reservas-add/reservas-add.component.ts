@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Quarto } from 'src/app/models/quarto';
+import { Quarto, Servicos } from 'src/app/models/quarto';
 import { AuthService } from 'src/app/services/auth.service';
 import { GeneralService } from 'src/app/services/general.service';
 
@@ -18,6 +18,8 @@ export class ReservasAddComponent implements OnInit {
   errorForm = false;
 
   quartos: Quarto [] = []
+  servicos: Servicos [] = []
+  servicosSelecionados: number[] = [];
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -45,7 +47,16 @@ export class ReservasAddComponent implements OnInit {
         this.loading = false;
       }
     );
-    this.loading = false;
+
+    this.service.getter('servicos').subscribe(
+      (res) => {
+        this.servicos = res;
+        this.loading = false;
+      },
+      (error) => {
+        this.loading = false;
+      }
+    );
   }
 
   salvar() {
@@ -60,7 +71,8 @@ export class ReservasAddComponent implements OnInit {
       quarto_id: this.addForm.value.quarto_id,
       checkin_date: this.addForm.value.checkin_date,
       checkout_date: this.addForm.value.checkout_date,
-      utilizador_id: this.auth.getUserId()
+      utilizador_id: this.auth.getUserId(),
+      servicos: this.servicosSelecionados
     };
 
     this.service.postter('reservas', data).subscribe(
@@ -72,5 +84,17 @@ export class ReservasAddComponent implements OnInit {
         this.loading = false;
       }
     );
+  }
+
+  onServicoChange(event: any): void {
+    const servicoId = +event.target.value;
+    if (event.target.checked) {
+      this.servicosSelecionados.push(servicoId);
+    } else {
+      const index = this.servicosSelecionados.indexOf(servicoId);
+      if (index > -1) {
+        this.servicosSelecionados.splice(index, 1);
+      }
+    }
   }
 }

@@ -11,6 +11,8 @@ import { QuartosAddComponent } from './components/quartos/quartos-add/quartos-ad
 import { UtilizadorNovoComponent } from './components/users/utilizador-novo/utilizador-novo.component';
 import { ReservasComponent } from './components/reservas/reservas.component';
 import { ReservasAddComponent } from './components/reservas/reservas-add/reservas-add.component';
+import { ServicosComponent } from './components/servicos/servicos.component';
+import { ServicosAddComponent } from './components/servicos/servicos-add/servicos-add.component';
 
 const routes: Routes = [
   {
@@ -59,6 +61,16 @@ const routes: Routes = [
   {
     path: 'nova-reserva',
     component: ReservasAddComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'servicos',
+    component: ServicosComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'novo-servico',
+    component: ServicosAddComponent,
     canActivate: [AuthGuard]
   },
   {

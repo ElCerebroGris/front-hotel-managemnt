@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { Quarto } from 'src/app/models/quarto';
+import { Servicos } from 'src/app/models/quarto';
 import { GeneralService } from 'src/app/services/general.service';
 
 @Component({
-  selector: 'app-quartos',
-  templateUrl: './quartos.component.html',
-  styleUrls: ['./quartos.component.css']
+  selector: 'app-servicos',
+  templateUrl: './servicos.component.html',
+  styleUrls: ['./servicos.component.css']
 })
-export class QuartosComponent implements OnInit {
+export class ServicosComponent implements OnInit {
 
   loading = true;
-  quartos: Quarto[] = [];
-  todosQuartos: Quarto[] = [];
+  quartos: Servicos[] = [];
+  todosQuartos: Servicos[] = [];
   chave = '';
 
   page = 1;
@@ -26,7 +26,7 @@ export class QuartosComponent implements OnInit {
   }
 
   carregar() {
-    this.service.getter('quartos').subscribe(
+    this.service.getter('servicos').subscribe(
       (res) => {
         this.quartos = this.todosQuartos = res;
         this.loading = false;
@@ -47,12 +47,11 @@ export class QuartosComponent implements OnInit {
 
   pesquisa($event: any): void {
     this.quartos = this.todosQuartos.filter((a) =>
-      a.tipo.toUpperCase().includes(this.chave.toUpperCase())
+      a.descricao.toUpperCase().includes(this.chave.toUpperCase())
     );
 
     if (!this.quartos || this.chave.length === 0) {
       this.quartos = this.todosQuartos;
     }
   }
-
 }

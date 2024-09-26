@@ -3,7 +3,7 @@
     <h6 class="mb-0 text-uppercase">Novo Quarto</h6>
     <hr />
 
-    <div class="card row col-9">
+    <div class="card row col-12">
       <div class="card-body">
         <div class="form-body">
 
@@ -14,9 +14,15 @@
 
           <form [formGroup]="addForm" *ngIf="!loading" class="row g-3">
             <div class="col-md-12">
-              <label for="input1" class="form-label">Descrição</label>
-              <input formControlName="name" type="text" class="form-control" id="input1" />
+              <label for="descricao" class="form-label">Descrição</label>
+              <input formControlName="descricao" type="text" class="form-control" id="descricao" />
             </div>
+
+            <div class="col-md-12">
+              <label for="comodidades" class="form-label">Comodidades</label>
+              <textarea formControlName="comodidades" class="form-control" id="comodidades" placeholder="Ar Condicionado ..." rows="3"></textarea>
+            </div>
+
             <div class="col-md-12">
               <label for="roomType" class="form-label">Tipo</label>
               <select formControlName="roomType" id="roomType" class="form-select">
@@ -25,9 +31,10 @@
                 </option>
               </select>
             </div>
+
             <div class="col-md-12">
-              <label for="price" class="form-label">Preço (Kz)</label>
-              <input formControlName="price" type="number" class="form-control" id="price" />
+              <label for="preco" class="form-label">Preço (Kz)</label>
+              <input formControlName="preco" type="number" class="form-control" id="preco" />
             </div>
             <div class="col-12">
               <button

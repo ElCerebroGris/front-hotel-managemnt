@@ -30,7 +30,7 @@ export class ResponseInterceptor implements HttpInterceptor {
     return next.handle(req).pipe(
       tap((evt) => {
         if (evt instanceof HttpResponse) {
-          if (evt.body && req.method === 'POST') {
+          if (evt.body && (req.method === 'POST' || req.method === 'PUT')) {
             this.service.callNotification('success');
           }
         }

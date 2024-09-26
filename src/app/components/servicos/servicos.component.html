@@ -1,6 +1,6 @@
 <div class="page-wrapper">
   <div class="page-content">
-    <h6 class="mb-0 text-uppercase">Quartos</h6>
+    <h6 class="mb-0 text-uppercase">Serviços</h6>
     <hr />
 
     <div class="row">
@@ -9,11 +9,11 @@
           <div class="row align-items-end mb-3">
             <div class="col-lg-3 col-xl-2">
               <a
-                [routerLink]="['/quarto-novo']"
+                [routerLink]="['/novo-servico']"
                 routerLinkActive="router-link-active"
                 class="btn btn-primary mb-3 mb-lg-0"
               >
-                <i class="bx bxs-plus-square"></i>Novo Quarto</a
+                <i class="bx bxs-plus-square"></i>Novo Serviço</a
               >
             </div>
 
@@ -54,30 +54,13 @@
               <thead class="table-light">
                 <tr>
                   <th>Descrição</th>
-                  <th>Comodidades</th>
-                  <th>Tipo</th>
                   <th>Preço</th>
-                  <th>Situação (Hoje)</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let item of quartos">
                   <td>{{ item.descricao }}</td>
-                  <td>{{ item.comodidades }}</td>
-                  <td>{{ item.tipo }}</td>
                   <td>{{ item.preco }} Kz</td>
-                  <td>
-                    <span
-                      *ngIf="item.situacao == 'vazio'"
-                      class="badge bg-gradient-quepal text-white shadow-sm w-100"
-                      >{{ item.situacao }}</span
-                    >
-                    <span
-                      *ngIf="item.situacao == 'ocupado'"
-                      class="badge bg-gradient-bloody text-white shadow-sm w-100"
-                      >{{ item.situacao }}</span
-                    >
-                  </td>
                 </tr>
               </tbody>
             </table>

@@ -1,0 +1,39 @@
+<div class="page-wrapper">
+  <div class="page-content">
+    <h6 class="mb-0 text-uppercase">Novo Serviço</h6>
+    <hr />
+
+    <div class="card row col-12">
+      <div class="card-body">
+        <div class="form-body">
+
+          <div *ngIf="loading" class="d-flex justify-content-center">
+            <div style="width: 5rem; height: 5rem;" class="spinner-border" role="status">
+            </div>
+          </div>
+
+          <form [formGroup]="addForm" *ngIf="!loading" class="row g-3">
+            <div class="col-md-12">
+              <label for="input1" class="form-label">Descrição</label>
+              <input formControlName="descricao" type="text" class="form-control" id="input1" />
+            </div>
+            <div class="col-md-12">
+              <label for="price" class="form-label">Preço (Kz)</label>
+              <input formControlName="preco" type="number" class="form-control" id="price" />
+            </div>
+            <div class="col-12">
+              <button
+                  (click)="salvar()"
+                  type="button"
+                  class="btn btn-primary"
+                >
+                  Salvar
+                </button>
+            </div>
+          </form>
+          <!--end row-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

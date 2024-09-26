@@ -14,8 +14,6 @@ export class ReservasComponent implements OnInit {
   loading = true;
   users: Reserva[] = [];
   allUsers: Reserva[] = [];
-  quartos: Quarto[] = [];
-  utilizadores: User[] = [];
   chave = '';
 
   page = 1;
@@ -25,7 +23,6 @@ export class ReservasComponent implements OnInit {
 
   ngOnInit(): void {
     this.carregar();
-    this.carregarExtra()
   }
 
   carregar() {
@@ -38,30 +35,6 @@ export class ReservasComponent implements OnInit {
         this.loading = false;
       }
     );
-    this.loading = false;
-  }
-
-  carregarExtra() {
-    this.service.getter('utilizadores').subscribe(
-      (res) => {
-        this.utilizadores = res;
-        this.loading = false;
-      },
-      (error) => {
-        this.loading = false;
-      }
-    );
-
-    this.service.getter('quartos').subscribe(
-      (res) => {
-        this.quartos = res;
-        this.loading = false;
-      },
-      (error) => {
-        this.loading = false;
-      }
-    );
-    this.loading = false;
   }
 
   pesquisa($event: any): void {
@@ -74,6 +47,21 @@ export class ReservasComponent implements OnInit {
     }
   }
 
+  confirmarReserva(id: string){
+    this.loading = true;
+    let data = {
+      estado: 'confirmada'
+    }
+    this.service.putter('reservas/'+id+'/estado', data).subscribe(
+      (res) => {
+        this.carregar();
+      },
+      (error) => {
+        this.loading = false;
+      }
+    );
+  }
+
   getState(state: string) {
     switch (state) {
       case 'client':
@@ -82,15 +70,5 @@ export class ReservasComponent implements OnInit {
         return 'Administrador';
     }
     return '';
-  }
-
-  getQuarto(id: string){
-    let q = this.quartos.filter(q => q.id=id).pop();
-    return q ? q.comodidades: '';
-  }
-
-  getUser(id: string){
-    let q = this.utilizadores.filter(q => q.id=id).pop();
-    return q ? q.nome: '';
   }
 }

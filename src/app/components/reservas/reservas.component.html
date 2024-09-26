@@ -57,6 +57,8 @@
                   <th>Data de Saída</th>
                   <th>Funcionário</th>
                   <th>Quarto</th>
+                  <th>Montante a pagar</th>
+                  <th>Estado</th>
                   <th></th>
                 </tr>
               </thead>
@@ -64,8 +66,24 @@
                 <tr *ngFor="let item of users">
                   <td>{{ item.checkin_date }}</td>
                   <td>{{ item.checkout_date }}</td>
-                  <td>{{ getUser(item.utilizador_id)}}</td>
-                  <td>{{ getQuarto(item.quarto_id)}}</td>
+                  <td>{{ item.utilizador }}</td>
+                  <td>{{ item.quarto }}</td>
+                  <td>{{ item.montante_total }} Kz</td>
+                  <td>
+                    <span
+                      *ngIf="item.estado == 'confirmada'"
+                      class="badge bg-gradient-quepal text-white shadow-sm w-100"
+                      >{{ item.estado }}</span
+                    >
+                    <span
+                      *ngIf="item.estado != 'confirmada'"
+                      class="badge bg-gradient-bloody text-white shadow-sm w-100"
+                      >{{ item.estado }}</span
+                    >
+                  </td>
+                  <td>
+                    <button (click)="confirmarReserva(item.id)" *ngIf="item.estado == 'pendente'" class="btn btn-sm btn-success">Confirmar</button>
+                  </td>
                 </tr>
               </tbody>
             </table>

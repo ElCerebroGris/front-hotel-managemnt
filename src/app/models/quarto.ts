@@ -4,4 +4,11 @@ export class Quarto {
   comodidades!: string;
   preco!: string;
   situacao!: string;
+  descricao!: string;
+}
+
+export class Servicos {
+  id!: string;
+  descricao!: string;
+  preco!: number;
 }
