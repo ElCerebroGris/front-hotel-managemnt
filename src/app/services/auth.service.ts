@@ -16,6 +16,8 @@ import {
 })
 export class AuthService {
   baseUrl = 'https://api-hotel-aurora.onrender.com/';
+  //baseUrl = 'http://localhost:3000/';
+
   headers?: {
     responseType: 'json';
     'Content-Type': 'application/json';
