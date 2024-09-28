@@ -19,8 +19,8 @@ declare global {
   providedIn: 'root',
 })
 export class GeneralService {
-  //baseUrl = 'https://api-hotel-aurora.onrender.com/';
-  baseUrl = 'http://localhost:3000/';
+  baseUrl = 'https://api-hotel-aurora.onrender.com/';
+  //baseUrl = 'http://localhost:3000/';
 
   headers?: {
     responseType: 'json';
