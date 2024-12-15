@@ -59,7 +59,7 @@
                   <th>Quarto</th>
                   <th>Montante a pagar</th>
                   <th>Estado</th>
-                  <th></th>
+                  <th>Opções</th>
                 </tr>
               </thead>
               <tbody>
@@ -87,8 +87,8 @@
                     >
                   </td>
                   <td>
-                    <button (click)="confirmarReserva(item.id, 'confirmada')" *ngIf="item.estado == 'pendente'" class="btn btn-sm btn-success">Confirmar</button>
-                    <button (click)="confirmarReserva(item.id, 'cancelada')" class="btn btn-sm btn-secondary mx-2">Cancelar</button>
+                    <button (click)="confirmarReserva(item.id, 'confirmada')" *ngIf="item.estado == 'pendente'" class="btn btn-sm btn-success" style="margin-right: 2px;">Confirmar</button>
+                    <button (click)="confirmarReserva(item.id, 'cancelada')" *ngIf="item.estado != 'cancelada'" class="btn btn-sm btn-secondary">Cancelar</button>
                   </td>
                 </tr>
               </tbody>
