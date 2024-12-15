@@ -47,10 +47,10 @@ export class ReservasComponent implements OnInit {
     }
   }
 
-  confirmarReserva(id: string){
+  confirmarReserva(id: string, estado: string){
     this.loading = true;
     let data = {
-      estado: 'confirmada'
+      estado: estado
     }
     this.service.putter('reservas/'+id+'/estado', data).subscribe(
       (res) => {

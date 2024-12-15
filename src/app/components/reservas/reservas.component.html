@@ -76,13 +76,19 @@
                       >{{ item.estado }}</span
                     >
                     <span
-                      *ngIf="item.estado != 'confirmada'"
+                      *ngIf="item.estado == 'pendente'"
+                      class="badge bg-gradient-bloody text-white shadow-sm w-100"
+                      >{{ item.estado }}</span
+                    >
+                    <span
+                      *ngIf="item.estado == 'cancelada'"
                       class="badge bg-gradient-bloody text-white shadow-sm w-100"
                       >{{ item.estado }}</span
                     >
                   </td>
                   <td>
-                    <button (click)="confirmarReserva(item.id)" *ngIf="item.estado == 'pendente'" class="btn btn-sm btn-success">Confirmar</button>
+                    <button (click)="confirmarReserva(item.id, 'confirmada')" *ngIf="item.estado == 'pendente'" class="btn btn-sm btn-success">Confirmar</button>
+                    <button (click)="confirmarReserva(item.id, 'cancelada')" class="btn btn-sm btn-secondary mx-2">Cancelar</button>
                   </td>
                 </tr>
               </tbody>
